@@ -1,4 +1,4 @@
-# UFO Shooting Game from you childhood
+# UFO Shooting Game from you childhood (Still under construction)
 Made with the raylib library for C++
 
 ## Prerequisites
