@@ -8,7 +8,7 @@ void spawnWall()
          int top_block = (rand()%(HEIGHT-2));
 
         if(!wall[i].active){
-            for(int w=0; w<3; w++){
+            for(int w=0; w<WALL_BLOCKS; w++){
                 wall[i].x[w] = WIDTH-1;
 
                 wall[i].y[w] = top_block;
@@ -27,7 +27,7 @@ void check_wallHit_player()
     for(int w=0; w<MAX_WALL; w++){
         if(wall[w].active){
             for(int i=0; i<player_size; i++){
-                for(int block=0; block<3; block++){
+                for(int block=0; block<WALL_BLOCKS; block++){
                     if(ship.y[i]==wall[w].y[block] &&
                         abs(ship.x[i]-wall[w].x[block])<=1){
                 
@@ -45,7 +45,7 @@ void check_wallHit_player()
 void updatewall()
 {
     for(int i=0; i<MAX_WALL; i++){
-        for(int block=0; block<3; block++){
+        for(int block=0; block<WALL_BLOCKS; block++){
             if(wall[i].active){
             wall[i].x[block] += towards_player;
 
@@ -64,9 +64,17 @@ void renderWall()
 {
     for(int i=0; i<MAX_WALL; i++){
         if(wall[i].active){
-            for(int block=0; block<3; block++){
+            for(int block=0; block<WALL_BLOCKS; block++){
                 DrawRectangle(wall[i].x[block]*CELL, wall[i].y[block]*CELL, CELL, CELL, DARKGREEN);
             }
         }
+    }
+}
+
+//reset wall-------------------------------------------------------
+void resetWall()
+{
+    for(int w=0; w<MAX_WALL; w++){
+        wall[w].active = false;
     }
 }

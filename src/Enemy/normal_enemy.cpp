@@ -67,3 +67,11 @@ void renderEnemy(){
         }
     }
 }
+
+//reset enemy------------------------------------------------------
+void resetEnemy()
+{
+    for(int i=0; i<MAX_ENEMIES; i++){
+        enemies[i].alive = false;
+    }
+}

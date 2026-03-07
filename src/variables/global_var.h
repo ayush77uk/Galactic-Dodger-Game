@@ -35,4 +35,5 @@ extern Bomb bomb[];
 
 //Wall variables-----------------------------------------------
 extern int MAX_WALL;
+extern int WALL_BLOCKS;
 extern Wall wall[];

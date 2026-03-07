@@ -67,3 +67,11 @@ void renderBomb(){
         }
     }
 }
+
+//reset bombs
+void resetBomb()
+{
+    for(int i=0; i<MAX_BOMBS; i++){
+        bomb[i].active = false;
+    }
+}

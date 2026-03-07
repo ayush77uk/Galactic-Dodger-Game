@@ -25,3 +25,16 @@ void move_down(){
     }
 }
 
+//reset player
+void resetPlayer()
+{
+    ship.alive = true;
+
+    int default_x[] = {1,0,0,0};
+    int default_y[] = {4,4,3,5};
+
+    for(int i=0; i<player_size; i++){
+        ship.x[i] = default_x[i];
+        ship.y[i] = default_y[i];
+    }
+}

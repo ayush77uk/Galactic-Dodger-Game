@@ -34,4 +34,5 @@ Bomb bomb[5];
 
 //Wall variables-----------------------------------------------
 int MAX_WALL = 3;
+int WALL_BLOCKS = 3;
 Wall wall[3];
