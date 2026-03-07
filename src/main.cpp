@@ -17,18 +17,22 @@ void drawGameOver()
 }
 
 bool gameOver = false;
+
+int enemy_spawnTimer = 0;
+int bomb_spawnTimer = 0;
+int wall_spawnTimer = 0;
+
 int enemy_spawnRate = 50;
-int bomb_spawnRate = 90;
+int bomb_spawnRate = 100;
+int wall_spawnRate = 90;
 
 
 int main(){
 
     InitWindow(WIDTH*CELL, HEIGHT*CELL, "LED Matrix Shooter");
 
-    SetTargetFPS(16);
+    SetTargetFPS(12);
 
-    int enemy_spawnTimer = 0;
-    int bomb_spawnTimer = 0;
     // int bulletTimer = 0;
 
     while(!WindowShouldClose()){
@@ -67,18 +71,27 @@ int main(){
             bomb_spawnTimer = 0;
         }
 
+        wall_spawnTimer++;
+        if(wall_spawnTimer > wall_spawnRate){
+            spawnWall();
+            wall_spawnTimer = 0;
+        }
+
         updateBullets();
         updateEnemy();
         updateBomb();
+        updatewall();
 
         check_bombHit();
-        if(!ship.alive) gameOver = true;
         check_enemyHit();
+        check_wallHit_player();
+        if(!ship.alive) gameOver = true;
 
         if(newscore-score>=4
         ){
-            enemy_spawnRate -= 1;
-            bomb_spawnRate -= 2;
+            enemy_spawnRate -= 5;
+            bomb_spawnRate -= 4;
+            wall_spawnRate -= 4;
             score = newscore;
         }
 
@@ -96,6 +109,9 @@ int main(){
 
         //draw bomb
         renderBomb();
+
+        //render wall
+        renderWall();
 
         EndDrawing();
 

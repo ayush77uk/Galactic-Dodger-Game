@@ -11,9 +11,6 @@ int away_from_player = 1;
 int to_top = -1;
 int to_bottom = 1;
 
-
-
-
 //Game variables-----------------------------------------------
 int highscore = 0;
 int score = 0;
@@ -34,3 +31,7 @@ Enemy enemies[10];
 //Bomb variables-----------------------------------------------
 int MAX_BOMBS = 5;
 Bomb bomb[5];
+
+//Wall variables-----------------------------------------------
+int MAX_WALL = 3;
+Wall wall[3];

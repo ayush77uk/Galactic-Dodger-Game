@@ -9,3 +9,4 @@
 #include "bullets/bullets_code.h"
 #include "Enemy/normal_enemy.h"
 #include "Enemy/bomb/bomb.h"
+#include "Enemy/wall/wall.h"

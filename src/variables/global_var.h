@@ -32,3 +32,7 @@ extern Enemy enemies[];
 //Bomb variables-----------------------------------------------
 extern int MAX_BOMBS;
 extern Bomb bomb[];
+
+//Wall variables-----------------------------------------------
+extern int MAX_WALL;
+extern Wall wall[];
