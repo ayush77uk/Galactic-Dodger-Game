@@ -66,12 +66,14 @@ int enemy_spawnTimer = 0;
 int bomb_spawnTimer = 0;
 int wall_spawnTimer = 0;
 
-int enemy_spawnRate = 50, 
-    reset_enemy_spawnRate = 50;
-int bomb_spawnRate = 100, 
-    reset_bomb_spawnRate = 100;
-int wall_spawnRate = 90, 
-    reset_wall_spawnRate = 90;
+int enemy_spawnRate = 30;
+int reset_enemy_spawnRate = enemy_spawnRate;
+
+int bomb_spawnRate = 100;
+int reset_bomb_spawnRate = bomb_spawnRate;
+
+int wall_spawnRate = 50;
+int reset_wall_spawnRate = wall_spawnRate;
 
 void resetGame(){
     resetPlayer();
@@ -79,6 +81,7 @@ void resetGame(){
     resetEnemy();
     resetBomb();
     resetWall();
+    reset_shooter();
     
     enemy_spawnTimer = 0;
     bomb_spawnTimer = 0;
@@ -174,10 +177,10 @@ int main(){
             EndDrawing();
 
 
-            if(newscore-score>=2){
-                enemy_spawnRate -= 5;
-                bomb_spawnRate -= 4;
-                wall_spawnRate -= 4;
+            if(newscore-score>7){
+                enemy_spawnRate -= 4;
+                bomb_spawnRate -= 5;
+                wall_spawnRate -= 5;
                 score = newscore;
                 Level++;
             }
@@ -187,20 +190,20 @@ int main(){
             
             spawn_shooter();
 
-            BeginDrawing();
+            BeginDrawing();//------------------------------------
             ClearBackground(BLACK);
 
             render_shooter();
             render_player();
-            render_shooter_bullets();
+            render_shooter_bullet();
             renderBullets();
 
 
-            EndDrawing();
+            EndDrawing();//-------------------------------------------
             
-            shooter_fireBullets();
-            update_shooter_bullets();
             update_shooter();
+            update_shooter_bullet();
+
             check_shooterHit_player();
             check_shooterHit();
 

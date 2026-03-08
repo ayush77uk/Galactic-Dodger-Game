@@ -29,8 +29,8 @@ struct Bomb{
 //----------------------------------------------------
 
 struct Wall{
-    int x[3];
-    int y[3];
+    int x[4];
+    int y[4];
     int active;
 };
 //----------------------------------------------------
@@ -41,16 +41,19 @@ struct Shooter{
     int health = 50;
 
     bool alive;
-    bool shooting;
 
-    struct Bullets{
-        int x; int y; int active;
+    struct Bullet{
+        int x;
+        int y;
+        bool active;
     };
-    Bullets shooter_bullets[5];
+
+    Bullet bullet;
 
     enum Position{
         top, mid, bottom
     };
+
     Position position;
 };
 //----------------------------------------------------
