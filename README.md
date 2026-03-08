@@ -5,6 +5,10 @@ Made with the raylib library for C++
 1. C++ compiler
 2. Raylib library (Download link : https://www.raylib.com/)
 
+## How to run
+1. Click on the main.cpp file in the src folder
+2. Press the F5 function key
+
 ## Game Controls
 1. W : Move ship up
 2. S : Move ship down
