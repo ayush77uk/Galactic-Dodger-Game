@@ -123,63 +123,97 @@ int main(){
         if(IsKeyDown(KEY_ENTER)){
             fireBullet();
         }
-
-        enemy_spawnTimer++;
-        if(enemy_spawnTimer > enemy_spawnRate){
-            spawnEnemy();
-            enemy_spawnTimer = 0;
-        }
-
-        bomb_spawnTimer++;
-        if(bomb_spawnTimer>bomb_spawnRate){
-            spawnBomb();
-            bomb_spawnTimer = 0;
-        }
-
-        wall_spawnTimer++;
-        if(wall_spawnTimer > wall_spawnRate){
-            spawnWall();
-            wall_spawnTimer = 0;
-        }
-
         updateBullets();
-        updateEnemy();
-        updateBomb();
-        updatewall();
 
-        check_bombHit();
-        check_enemyHit();
-        check_wallHit_player();
+        if(Level != 2){
+
+            enemy_spawnTimer++;
+            if(enemy_spawnTimer > enemy_spawnRate){
+                spawnEnemy();
+                enemy_spawnTimer = 0;
+            }
+
+            bomb_spawnTimer++;
+            if(bomb_spawnTimer>bomb_spawnRate){
+                spawnBomb();
+                bomb_spawnTimer = 0;
+            }
+
+            wall_spawnTimer++;
+            if(wall_spawnTimer > wall_spawnRate){
+                spawnWall();
+                wall_spawnTimer = 0;
+            }
+
+            updateEnemy();
+            updateBomb();
+            updatewall();
+
+            check_bombHit();
+            check_enemyHit();
+            check_wallHit_player();
+
+            BeginDrawing();
+            ClearBackground(BLACK);
+
+            //draw player
+            render_player();
+
+            // draw bullets
+            renderBullets();
+            
+            // draw enemies
+            renderEnemy();
+
+            //draw bomb
+            renderBomb();
+
+            //render wall
+            renderWall();
+
+            EndDrawing();
+
+
+            if(newscore-score>=2){
+                enemy_spawnRate -= 5;
+                bomb_spawnRate -= 4;
+                wall_spawnRate -= 4;
+                score = newscore;
+                Level++;
+            }
+        }
+
+        if(Level == 2){
+            
+            spawn_shooter();
+
+            BeginDrawing();
+            ClearBackground(BLACK);
+
+            render_shooter();
+            render_player();
+            render_shooter_bullets();
+            renderBullets();
+
+
+            EndDrawing();
+            
+            shooter_fireBullets();
+            update_shooter_bullets();
+            update_shooter();
+            check_shooterHit_player();
+            check_shooterHit();
+
+            if(!shooter.alive){
+                newscore += 4;
+                score = newscore;
+                Level++;
+            }
+            
+        } 
 
         if(!ship.alive) gameState = gameOver;
 
-        if(newscore-score>=4
-        ){
-            enemy_spawnRate -= 5;
-            bomb_spawnRate -= 4;
-            wall_spawnRate -= 4;
-            score = newscore;
-        }
-
-        BeginDrawing();
-        ClearBackground(BLACK);
-
-        //draw player
-        render_player();
-
-        // draw bullets
-        renderBullets();
-        
-        // draw enemies
-        renderEnemy();
-
-        //draw bomb
-        renderBomb();
-
-        //render wall
-        renderWall();
-
-        EndDrawing();
 
      } //if ! gameState playing closes
 
@@ -197,6 +231,7 @@ int main(){
                 gameState = play;
                 resetGame();
                 newscore = score = 0;
+                Level = 1;
             }
             EndDrawing();
         }

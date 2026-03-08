@@ -12,6 +12,7 @@ int to_top = -1;
 int to_bottom = 1;
 
 //Game variables-----------------------------------------------
+int Level = 1;
 int highscore = 0;
 int score = 0;
 int newscore = 0;
@@ -36,3 +37,8 @@ Bomb bomb[5];
 int MAX_WALL = 3;
 int WALL_BLOCKS = 3;
 Wall wall[3];
+
+//shooter variables--------------------------------------------
+Shooter shooter;
+int max_shooter_bullets = 5;
+int shooter_size = 4;

@@ -10,3 +10,4 @@
 #include "Enemy/normal_enemy.h"
 #include "Enemy/bomb/bomb.h"
 #include "Enemy/wall/wall.h"
+#include "Enemy/shooter/shooter.h"

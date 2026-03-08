@@ -13,6 +13,7 @@ extern int to_top;
 extern int to_bottom;
 
 //Game variables-----------------------------------------------
+extern int Level;
 extern int highscore;
 extern int score;
 extern int newscore;
@@ -37,3 +38,8 @@ extern Bomb bomb[];
 extern int MAX_WALL;
 extern int WALL_BLOCKS;
 extern Wall wall[];
+
+//shooter variables--------------------------------------------
+extern Shooter shooter;
+extern int max_shooter_bullets;
+extern int shooter_size;

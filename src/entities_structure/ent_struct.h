@@ -34,6 +34,25 @@ struct Wall{
     int active;
 };
 //----------------------------------------------------
+
+struct Shooter{
+    int x[4] = {18,19,19,19};
+    int y[4] = {4,4,3,5};
+    int health = 50;
+
+    bool alive;
+    bool shooting;
+
+    struct Bullets{
+        int x; int y; int active;
+    };
+    Bullets shooter_bullets[5];
+
+    enum Position{
+        top, mid, bottom
+    };
+    Position position;
+};
 //----------------------------------------------------
 //----------------------------------------------------
 //----------------------------------------------------
